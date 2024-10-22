@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: microsservice_db
+    ports:
+      - "5432:5432"
+
+  user-service:
+    build: ./microsservice-db
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+  order-service:
+    build: ./microsservice-RESTful
+    ports:
+      - "8082:8080"
