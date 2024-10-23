@@ -1,4 +1,4 @@
-package com.microsservice_a.Microsservice_a;
+package com.microsservice_db.Microsservice_db;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
