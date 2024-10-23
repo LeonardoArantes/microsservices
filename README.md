@@ -8,7 +8,8 @@ this project is intended to showcase basic knolwdge regarding backend developmen
 
 # future updates
 
-- implementation of basic models in microsserviceDB
+- implementation of basic models in microsserviceDB ( in progress )
+    - implemented Entity, Repository, simple Enum
 - implementation of RESTful patterns in microsservice-RESTful
 - implementation of tests unit tests, integration tests using test containers
 - implementation of a communication between microsservices
