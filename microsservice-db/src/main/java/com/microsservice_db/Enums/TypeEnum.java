@@ -1,4 +1,4 @@
-package com.microsservice_db.Model;
+package com.microsservice_db.Enums;
 
 public enum TypeEnum {
     SOFA("Sofa"),

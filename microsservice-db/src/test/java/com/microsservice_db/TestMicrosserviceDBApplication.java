@@ -1,6 +1,8 @@
-package com.microsservice_db.Microsservice_db;
+package com.microsservice_db;
 
 import org.springframework.boot.SpringApplication;
+
+import com.microsservice_db.MicrosserviceDBApplication;
 
 public class TestMicrosserviceDBApplication {
 

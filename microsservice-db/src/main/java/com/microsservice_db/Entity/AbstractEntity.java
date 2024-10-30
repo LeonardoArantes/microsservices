@@ -1,4 +1,4 @@
-package com.microsservice_db.Model;
+package com.microsservice_db.Entity;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class EntityModel implements Serializable {
+public abstract class AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue

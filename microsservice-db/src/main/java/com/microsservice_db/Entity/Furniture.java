@@ -1,18 +1,22 @@
-package com.microsservice_db.Model;
+package com.microsservice_db.Entity;
 
 import java.math.BigDecimal;
+
+import com.microsservice_db.Enums.TypeEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 @Table(name = "furniture")
-public class Furniture extends EntityModel { 
+public class Furniture extends AbstractEntity { 
 
         @Column(nullable = false)
         private String name;

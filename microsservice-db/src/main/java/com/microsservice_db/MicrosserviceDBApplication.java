@@ -1,4 +1,4 @@
-package com.microsservice_db.Microsservice_db;
+package com.microsservice_db;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
