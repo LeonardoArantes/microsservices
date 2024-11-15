@@ -5,8 +5,9 @@ this project is intended to showcase basic knolwdge regarding backend developmen
 - docker usage
 - microsservices
 - connection to a database using postgres
-- implemented Entity, Repository, simple Enum, partial implementation of Service
+- implemented Entity, Repository, simple Enum, implementation of Service
 - implementation of a SQL schema to creat a table "furniture"
+- implementation of unchecked exception 
 
 # future updates
 

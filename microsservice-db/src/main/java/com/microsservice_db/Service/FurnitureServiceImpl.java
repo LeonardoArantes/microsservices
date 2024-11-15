@@ -1,16 +1,16 @@
 package com.microsservice_db.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Consumer;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.microsservice_db.Entity.Furniture;
+import com.microsservice_db.Exceptions.ItemNotFoundException;
 import com.microsservice_db.Repository.FurnitureRepository;
 
 
@@ -20,7 +20,7 @@ public class FurnitureServiceImpl implements AbstractService {
     @Autowired
     private FurnitureRepository repository;
 
-    @Override //CREATE
+    @Override
     @Transactional
     public Furniture createFurniture(Furniture furniture) {
         return repository.save(furniture);
@@ -38,22 +38,30 @@ public class FurnitureServiceImpl implements AbstractService {
 
     @Override
     @Transactional
-    public Furniture updateFurniture(UUID id, Furniture furniture) {
-    return null;
-        /*    return repository.findById(id)
-            .map(existingFurniture -> {
-                if(!furniture.equals(existingFurniture)){
-                    BeanUtils.copyProperties(furniture, existingFurniture, "id");
-                    return repository.save(existingFurniture);
-                }
-            }).orElse(() -> repository.findById(id));*/
-    } 
+    public boolean updateFurniture(UUID id, Consumer<Furniture> newFurniture) {
+        Optional<Furniture> furnitureOptional = repository.findById(id);
+        if(newFurniture == null)
+            throw new ItemNotFoundException("no furniture found for this ID");
+        
+        
+        if(furnitureOptional.isPresent()) {
+            Furniture furniture = furnitureOptional.get();
+            newFurniture.accept(furniture);
+            repository.save(furniture);
+            return true;
+        }
+        return false;
+    }
 
     @Override
-    @Transactional
     public void deleteFurniture(UUID id) {
         Optional<Furniture> furniture = repository.findById(id);
-    //    repository.delete();
+
+        if(!furniture.isPresent())
+            throw new ItemNotFoundException("no furniture found for this ID");
+        
+        repository.deleteById(id);
+
     }
 
 }
