@@ -20,7 +20,6 @@ public class ItemNotFoundException extends RuntimeException {
     - TypeNotPresentException
     should extends RuntimeException*/
     
-    
     public ItemNotFoundException(String message){
         super(message);
     }

@@ -17,6 +17,6 @@ public abstract class AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(unique = true)
-    private UUID id;
+    @Column(unique = true, updatable = false, nullable = false)
+    private UUID id = UUID.randomUUID();
 }
