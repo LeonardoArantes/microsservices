@@ -1,4 +1,5 @@
 services:
+  #Database using Postgres
   db:
     image: postgres:latest
     environment:
@@ -8,14 +9,51 @@ services:
     ports:
       - "5433:5432"
 
+#  THE CODE BELOW NEEDS FURTHER TESTING 
+#  zookeeper:
+#    image: wurstmeister/zookeeper:3.4.6
+#    environment:
+#      ZOOKEEPER_CLIENT_PORT: 2181
+#    ports:
+#      - "2181:2181"
+#    networks:
+#      - kafka-net
+
+#  kafka:
+#    image: wurstmeister/kafka:latest
+#    environment:
+#      KAFKA_ADVERTISED_LISTENER: INSIDE_KAFKA:9093
+#      KAFKA_LISTENER_SECURITY_PROTOCOL: PLAINTEXT
+#      KAFKA_LISTENER_NAMES: INSIDE_KAFKA
+#      KAFKA_LISTENER_PORT: 9093
+#      KAFKA_LISTENER_TLS_PORT: 9094
+#      KAFKA_LISTENER_INTERFACE: INSIDE_KAFKA
+#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#      KAFKA_LISTENER_NAME_INSIDE_KAFKA: INSIDE_KAFKA
+#      KAFKA_LISTENER_INTERFACE: INSIDE_KAFKA
+#      KAFKA_LISTENER_PORT: 9093
+#      KAFKA_LISTENER_SECURITY_PROTOCOL: PLAINTEXT
+#    ports:
+#      - "9093:9093"
+#    depends_on:
+#      - zookeeper
+#    networks:
+#      - kafka-net
+
+#  networks:
+#    kafka-net:
+#      driver: bridge
+  
+  #MICROSSERVICE RESPONSIBLE FOR STORING DATA USING POSTGRES
   Microsservice-db-service:
     build: ./microsservice-db
     ports:
-      - "8081:8081"
+      - "8082:8082"
     depends_on:
       - db
 
+  #MICROSSERVICE RESPONSIBLE FOR RECEIVING EXTERNAL INPUTS, LIKE CREATE/READ/UPDATE/DELETE
   Microsservice-RESTful-service:
     build: ./microsservice-RESTful
     ports:
-      - "8082:8082"
+      - "8081:8081"

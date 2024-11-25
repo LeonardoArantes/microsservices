@@ -16,4 +16,6 @@ this project is intended to showcase basic knowledge regarding backend developme
 - implementation of RESTful patterns in microsservice-RESTful
 - implementation of tests unit tests, integration tests using test containers
 - implementation of a communication between microsservices
+    - source  for KAFKA implementatios https://deeppatel23.medium.com/implementing-kafka-in-java-a-practical-guide-df388e098c2b
+    (this implementatio needs futher testing and research)
 
